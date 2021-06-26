@@ -1,13 +1,13 @@
 import axios from "axios"; // Requests
-import client from "./index"; // GraphQL requests
-import { ZORA_MEDIA_BY_ID } from "./queries"; // GraphQL Queries
+import client from "data"; // GraphQL requests
+import { ZORA_MEDIA_BY_ID } from "@data/queries"; // GraphQL Queries
 
 /**
  * Collect Zora media post by ID
  * @param {Number} id post number
  * @returns {Object} containing Zora media details
  */
- export const getPostByID = async (id) => {
+export const getPostByID = async (id) => {
   // Collect post
   let post = await client.request(ZORA_MEDIA_BY_ID(id));
   post = post.media;
