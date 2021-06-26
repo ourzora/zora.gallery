@@ -13,7 +13,15 @@ export const getPostByID = async (id) => {
   post = post.media;
 
   // Collect post metadata
-  const metadata = await axios.get(post.metadataURI);
+  let metadata = {
+    data: {}
+  };
+  // Post metadata will be null if request fails
+  try {
+    metadata = await axios.get(post.metadataURI);
+  } catch (e) {
+    console.log(e)
+  }
   post.metadata = metadata.data;
 
   // Only show Zora posts
